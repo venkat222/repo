@@ -4,7 +4,11 @@
   <groupId>com.rns.app</groupId>
   <artifactId>webapp</artifactId>
   <packaging>war</packaging>
+<<<<<<< HEAD
   <version>1.0</version>
+=======
+  <version>1.3</version>
+>>>>>>> 8eae669d49249b92e2dfc348f943c4f0b6f13ebb
   <name>webapp Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
