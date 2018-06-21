@@ -22,14 +22,8 @@ parallel 'integration': {
           }
      }
 }
-stage 'approve'
-timeout(time: 7, unit: 'DAYS') {
-     input message: 'Do you want to deploy?', submitter: 'admin'
-}
-stage name:'deploy', concurrency:
-node ('Linux') {
-     unstash 'source'
-     withEnv(["PATH+MAVEN=${tool 'maven3.3'}/bin"]) {
-          sh "mvn clean deploy"
-     }
+stage 'Results'
+node ('Linux'){
+     junit '**/target/surefire-reports/TEST-*.xml'
+      archive 'target/*.war'
 }
