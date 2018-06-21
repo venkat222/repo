@@ -25,5 +25,14 @@ parallel 'integration': {
 stage 'Results'
 node ('Linux'){
      junit '**/target/surefire-reports/TEST-*.xml'
+}
+
+
+stage 'Artifacts'
+node ('Linux'){
       archive 'target/*.war'
+}
+stage 'Finger Print'
+node ('Linux'){
+fingerprint 'target/**/*.war'
 }
