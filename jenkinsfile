@@ -36,3 +36,16 @@ stage 'Finger Print'
 node ('Linux'){
 fingerprint 'target/**/*.war'
 }
+
+stage 'publisher'
+node ('Linux'){
+	 publishers {
+        git {
+            pushOnlyIfSuccess()
+            tag('origin', 'foo-$PIPELINE_VERSION') {
+                message('Release $PIPELINE_VERSION')
+                create()
+            }
+        }
+    }
+}
